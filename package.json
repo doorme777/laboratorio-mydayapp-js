@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "http-server ./dist -p 8080",
     "dev": "webpack-dev-server --mode development --open",
