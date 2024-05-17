@@ -16,9 +16,9 @@ export class GeneratorTask {
   }
 
   addTask(title) {
-    const task = new Task(title);
+    const task = new Task(title.trim());
     this.tasks.push(task);
-    return task;
+    return this.renderTasks(task.id, task.title);
   }
 
   removeTask(id) {
@@ -46,7 +46,47 @@ export class GeneratorTask {
     const task = this.getTask(id);
     task.title = title;
   }
+
+  renderTasks(id, title) {
+    const taskElement = document.createElement("li");
+    taskElement.setAttribute("data-id", id);
+
+    taskElement.innerHTML = `
+        <div class="view">
+            <input class="toggle" type="checkbox">
+            <label>${title}</label>
+            <button class="destroy"></button>
+        </div>
+        <input class="edit" value="${title}">
+    `;
+
+    return taskElement;
+  }
+
+  renderCompletedTasks() {
+    return this.tasks.filter((task) => task.completed);
+  }
+
+  renderActiveTasks() {
+    return this.tasks.filter((task) => !task.completed);
+  }
+
+  persistData() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  }
 }
+
+{
+  /* <li>
+  <div class="view">
+    <input class="toggle" type="checkbox">
+    <label>Buy a unicorn</label>
+    <button class="destroy"></button>
+  </div>
+  <input class="edit" value="Buy a unicorn">
+</li> */
+}
+
 // Tarea Checkeada
 {
   /* <div class="view">
