@@ -12,17 +12,19 @@ class Task {
 
 export class GeneratorTask {
   constructor() {
-    this.tasks = [];
+    this.tasks = this.parserData() ?? [];
   }
 
   addTask(title) {
     const task = new Task(title.trim());
     this.tasks.push(task);
+    this.persistData();
     return this.renderTasks(task.id, task.title);
   }
 
   removeTask(id) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.persistData();
   }
 
   getTask(id) {
@@ -33,18 +35,21 @@ export class GeneratorTask {
     return this.tasks;
   }
 
-  removeAllTasks() {
-    this.tasks = [];
+  removeAllTasksCompleted() {
+    this.tasks = this.tasks.filter((task) => !task.completed);
+    this.persistData();
   }
 
   completeTask(id) {
     const task = this.getTask(id);
     task.completed = !task.completed;
+    this.persistData();
   }
 
   editTask(id, title) {
     const task = this.getTask(id);
-    task.title = title;
+    task.title = title.trim();
+    this.persistData();
   }
 
   renderTasks(id, title) {
@@ -72,7 +77,11 @@ export class GeneratorTask {
   }
 
   persistData() {
-    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    localStorage.setItem("mydayapp-js", JSON.stringify(this.tasks));
+  }
+
+  parserData() {
+    return JSON.parse(localStorage.getItem("mydayapp-js"));
   }
 }
 
