@@ -126,6 +126,7 @@ body {
 }
 
 .main {
+  display: none;
   position: relative;
   z-index: 2;
   border-top: 1px solid #e6e6e6;
@@ -288,6 +289,7 @@ body {
 }
 
 .footer {
+  display: none;
   padding: 1rem 1.5rem;
   height: 20px;
   text-align: center;
