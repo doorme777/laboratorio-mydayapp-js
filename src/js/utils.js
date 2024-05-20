@@ -1,7 +1,3 @@
-// export const sayHello = (text) => {
-//   return text;
-// };
-
 class Task {
   constructor(title) {
     this.id = Date.now();
@@ -83,44 +79,4 @@ export class GeneratorTask {
   parserData() {
     return JSON.parse(localStorage.getItem("mydayapp-js"));
   }
-}
-
-{
-  /* <li>
-  <div class="view">
-    <input class="toggle" type="checkbox">
-    <label>Buy a unicorn</label>
-    <button class="destroy"></button>
-  </div>
-  <input class="edit" value="Buy a unicorn">
-</li> */
-}
-
-// Tarea Checkeada
-{
-  /* <div class="view">
-  <input class="toggle" type="checkbox" checked="checked">
-  <label>Learn JavaScript</label>
-  <button class="destroy"></button>
-</div> */
-}
-
-// Tarea sin Checkear
-{
-  /* <div class="view">
-  <input class="toggle" type="checkbox">
-  <label>Buy a unicorn</label>
-  <button class="destroy"></button>
-</div> */
-}
-
-// Tarea Editada
-{
-  /* <li class="editing">
-  <div class="view"><input class="toggle" type="checkbox">
-   <label>Make dishes</label>
-   <button class="destroy"></button>
-   </div>
-   <input class="edit" value="Make dishes">
-</li> */
 }
