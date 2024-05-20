@@ -22,7 +22,7 @@ function renderIfExist() {
   if (!main || !footer) return;
 
   const tasks = generatorTask.getTasks();
-  if (localStorage.length === 0) {
+  if (tasks.length === 0) {
     main.style.display = "none";
     footer.style.display = "none";
     return 0;
